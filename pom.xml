@@ -5,8 +5,6 @@
   <groupId>org.example</groupId>
   <artifactId>herokujavasample</artifactId>
   <version>1.0-SNAPSHOT</version>
-  <packaging>pom</packaging>
-  <name>herokujavasample</name>
   
   <build>
     <plugins>
