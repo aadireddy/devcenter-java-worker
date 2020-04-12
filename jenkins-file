@@ -28,10 +28,4 @@ node{
     stage('build docker image'){
         sh 'docker build -t aadireddy/azure:$BUILD_NUMBER .'
     }
-    stage('push docker image'){
-        withCredentials([string(credentialsId: 'docker-pwd', variable: 'dockerhubpwd')]) {
-        sh "docker login -u aadireddy -p ${dockerhubpwd}"
-        }
-        sh 'docker push aadireddy/azure:$BUILD_NUMBER'
-    }
- }
+  }
