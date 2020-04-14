@@ -1,32 +1,19 @@
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: devcenter-deploy
 spec:
+  selector:
+    matchLables:
+      app: devcenter
   replicas: 1
   template:
     matadata:
       labels:
-        app: devcenter-ctr
+        app: devcenter
     spec:
       containers:
-      - name: devcenter-pod
+      - name: devcenter
         iamge: aadireddy/devcenter:latest
         ports:
         - containerPort: 8080
-
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: devcenter-svc
-  lables:
-    app: devcenter-ctr
-spec:
-  type: NodePort
-  ports:
-  - port: 8080
-    nodePort: 30003
-    protocol:TCP
-  selector:
-    app: devcenter-ctr  
