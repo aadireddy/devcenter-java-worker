@@ -1,0 +1,16 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: devcenter-deploy
+spec:
+  replicas: 1
+  template:
+    matadata:
+      labels:
+        app: devcenter-ctr
+    spec:
+      containers:
+      - name: devcenter-pod
+        iamge: aadireddy/devcenter:latest
+        ports:
+        - containerPort: 8080
