@@ -18,7 +18,7 @@ spec:
       - name: devcenter
         image: docker.io/aadireddy/devcenter:latest
         ports:
-        - containerPort: 80
+        - containerPort: 8080
 ---
 # NodePort Service
 apiVersion: v1
