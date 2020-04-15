@@ -11,7 +11,7 @@ spec:
       spec:
          containers:
          - name: sample-pod
-           image: docker.io/raknas000/devcente:latest
+           image: docker.io/aadireddy/devcenter:latest
            ports:
            - containerPort: 8080
 ---
@@ -19,14 +19,11 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: devcenter-svc
-  lables:
-    app: devcenter-ctr
+    name: devcenter-svc
 spec:
-  type: NodePort
-  ports:
-  - port: 8080
-    nodePort: 30003
-    protocol:TCP
-  selector:
-    app: devcenter-ct
+    selector:
+        app: devcenter
+    ports:
+        - protocol: TCP
+          port: 80
+          targetPort: 30005
