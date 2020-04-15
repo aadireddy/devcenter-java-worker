@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: devcenter-deploy
+spec:
+  selector:
+    matchLables:
+      app: devcenter
+  replicas: 1
+  template:
+    matadata:
+      labels:
+        app: devcenter
+    spec:
+      containers:
+      - name: devcenter
+        iamge: aadireddy/devcenter:latest
+        ports:
+        - containerPort: 8080
