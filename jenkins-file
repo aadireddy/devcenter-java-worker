@@ -19,6 +19,10 @@ node{
         }
         sh 'docker push aadireddy/devcenter:$BUILD_NUMBER'
     }
+    stage('update image version'){
+    sh label: '', script: '''sed -i s/latest/$BUILD_NUMBER/ devcenter-deploy.yml'''    
+    
+    }
     stage('deploy to kubernetes'){
         kubernetesDeploy(
         configs: 'devcenter-deploy.yml',
