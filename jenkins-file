@@ -14,14 +14,11 @@ node{
         sh 'docker build -t aadireddy/devcenter:$BUILD_NUMBER .'
     }
     stage('push docker image'){
-    withCredentials([string(credentialsId: 'docker-pwd', variable: 'dockerHubPwd')]) {
-        sh "docker login -u aadireddy -p ${dockerHubPwd}"
-    }
-        sh 'docker push aadireddy/devcenter:$BUILD_NUMBER.'
+        sh label: '', script: '''docker tag aadireddy/devcenter:$BUILD_NUMBER docker.io/aadireddy/devcenter:$BUILD_NUMBER
+                                 docker push docker.io/aadireddy/devcenter:$BUILD_NUMBER'''
     }
     stage('update image version'){
         sh label: '', script: '''sed -i s/latest/$BUILD_NUMBER/ devcenter-deploy.yml'''    
-    
     }
     stage('deploy to kubernetes'){
         kubernetesDeploy(
