@@ -14,7 +14,7 @@ node{
         sh 'docker build -t aadireddy/devcenter:$BUILD_NUMBER .'
     }
     stage('push docker image'){
-        withCredentials([string(credentialsId: 'dockerpwd', variable: 'docker-pwd')]) {
+        withCredentials([string(credentialsId: 'docker-pwd', variable: 'docker-pwd')]) {
         sh "docker login -u aadireddy -p ${docker-pwd}"
         }
         sh 'docker push aadireddy/devcenter:$BUILD_NUMBER'
