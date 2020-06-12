@@ -1,7 +1,10 @@
-public class OneOffProcess
-{
-    public static void main(String[] args)
-    {
-        System.out.println("OneOffProcess executed.");
-    }    
+public class Characters {
+
+    public static void main(String[] args) {
+
+        char c;
+
+        for(c = 'A'; c <= 'Z'; ++c)
+            System.out.print(c + " ");
+    }
 }
